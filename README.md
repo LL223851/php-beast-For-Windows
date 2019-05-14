@@ -37,7 +37,12 @@ b)在当前目录E:\php-sdk下按住shift键同时右击鼠标，选择“在此
 
 ![2](2.png)
 
-c)再运行：phpsdk_buildtree phpdev，结束后会在E:\php-sdk\下生成“phpdev\vc15\x86”目录结构，解压php-7.3.5-src.zip，把php-7.3.5-src放到X86目录下，同时在x86下手动创建“prcl”目录，解压php-beast-master.zip，复制php-beast-master到prcl目录下，并改名为beast。
+c)再运行：phpsdk_buildtree phpdev，等待结束
+```
+E:\php-sdk
+$ phpsdk_buildtree phpdev
+```
+结束后会在E:\php-sdk\下生成“phpdev\vc15\x86”目录结构，解压php-7.3.5-src.zip，把php-7.3.5-src放到X86目录下，同时在x86下手动创建“prcl”目录，解压php-beast-master.zip，复制php-beast-master到prcl目录下，并改名为beast。
 
 d)在命令行下运行“cd phpdev\vc15\x86\php-7.3.5-src” 进入“E:\php-sdk\phpdev\vc15\x86\php-7.3.5-src” ,执行“phpsdk_deps --update --branch master”命令用来获取SDK的依赖包，最终目录结果如下图：
 
@@ -59,7 +64,7 @@ e)修改代码。进入“E:\php-sdk\phpdev\vc15\x86\pecl\beast”目录修改ph
 #include <process.h>
 ```
 
-（2）修改beast_log.h代码，这个好像是修改unix/Linux系统下文件属性的，win下不需要
+（2）修改beast_log.h代码，这个好像是修改unix/Linux系统下文件属性的，win下不需要，不修改的话无法编译
 
 ```c
 int beast_log_chown(uid_t uid, gid_t gid);
@@ -75,7 +80,7 @@ int beast_log_chown(uid_t uid, gid_t gid);
 #endif
 ```
 
-修改至此编译可以通过，但是会提示一些错误，自己自行修改吧
+修改至此编译可以通过，但是会提示一些警告信息，可以不管也可以自己自行修改吧
 
 我自己的修改如下beast_mm.c第126行
 
@@ -119,7 +124,7 @@ E:\php-sdk\phpdev\vc15\x86\php-7.3.5-src
 $ buildconf
 ```
 
-执行configure命令并等地结束
+执行configure命令并等待结束
 
 ```
 E:\php-sdk\phpdev\vc15\x86\php-7.3.5-src
