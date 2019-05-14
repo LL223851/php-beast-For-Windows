@@ -24,10 +24,8 @@ https://windows.php.net/downloads/releases/php-7.3.5-src.zip
 
 c）下载并安装编译环境
 
-PHP7是用VC15编译的，没有VC15，所以到微软的官网上下载visual
-studio 2017 entrpise的试用版即可（根据PHP版本的编译环境选择安装扩展编译VC版本）。
-地址：
-<https://www.visualstudio.com/zh-hans/?rr=https%3A%2F%2Fwww.microsoft.com%2Fzh-cn%2F>
+PHP7是用VC15编译的，没有VC15，所以到微软的官网上下载visual studio 2017 entrpise的试用版即可（根据PHP版本的编译环境选择安装扩展编译VC版本）。
+地址直接问度娘
 
 2、目录准备及编译
 
@@ -61,14 +59,14 @@ $ phpsdk_deps --update --branch master
 
 e)修改代码。进入“E:\php-sdk\phpdev\vc15\x86\pecl\beast”目录修改php-beast代码
 
-（1）添加“win95nt.h”文件utf-8编码，内容如下（这个文件在“beast_log.h”中引用了，Linux下用于的是“unistd.h”，win95nt.h编译时提示找不到这个文件，度娘说的，直接新建一个，加入下面的内容引用替换）
+（1）添加“win95nt.h”文件utf-8编码，内容如下（这个文件在“beast_log.h”中引用了，Linux下用的是“unistd.h”，Windows下编译提示找不到win95nt.h这个文件，度娘说的，直接新建一个，加入下面的内容引用替换）
 
 ```c
 #include <io.h>
 #include <process.h>
 ```
 
-（2）修改beast_log.h代码，这个好像是修改unix/Linux系统下文件属性的，win下不需要，不修改的话无法编译
+（2）修改beast_log.h代码，这个好像是修改unix/Linux系统下日志文件属性的，win下不需要，不修改的话无法编译
 
 ```c
 int beast_log_chown(uid_t uid, gid_t gid);
