@@ -1,0 +1,26 @@
+// $Id$
+// vim:ft=javascript
+
+// If your extension references something external
+ARG_WITH("beast", "for beast support", "yes,shared");
+
+
+ARG_ENABLE("beast", "enable beast support", "yes,shared");
+
+ARG_ENABLE("beast-debug", "enable beast debug mode", "no");
+ARG_ENABLE("beast-debug", "enable beast debug mode", "no");
+ARG_ENABLE("execute-normal-script", "whether to enable execute normal PHP script mode","yes");
+
+if (PHP_BEAST != "no") {
+	if (PHP_BEAST_DEBUG != "no") {
+		AC_DEFINE('BEAST_DEBUG_MODE', 1, 'Debug support in beast');
+	}
+	if (PHP_EXECUTE_NORMAL_SCRIPT != "yes"){
+		AC_DEFINE('BEAST_EXECUTE_NORMAL_SCRIPT', 0, 'disable execute normal PHP script mode');
+	}else{
+		AC_DEFINE('BEAST_EXECUTE_NORMAL_SCRIPT', 1, 'enable execute normal PHP script mode');
+	}
+
+	EXTENSION("beast", "beast.c aes_algo_handler.c des_algo_handler.c base64_algo_handler.c beast_mm.c spinlock.c cache.c beast_log.c global_algo_modules.c header.c networkcards.c tmpfile_file_handler.c file_handler_switch.c shm.c", true);
+}
+
