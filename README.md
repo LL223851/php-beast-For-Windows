@@ -31,7 +31,7 @@ studio 2017 entrpise的试用版即可（根据PHP版本的编译环境选择安
 
 a）新建一个编译目录，我自己准备的是E盘根目录下解压**php-sdk-binary-tools**   并重命名为php-sdk，测试编译工作目录为E:\php-sdk，截图如下：
 
-![1](\1.png)
+![1](1.png)
 
 b)在当前目录E:\php-sdk下按住shift键同时右击鼠标，选择“在此处打开命令窗口”打开命令行，phpsdk-vc15-x86.bat脚本
 
