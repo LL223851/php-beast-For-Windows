@@ -31,17 +31,17 @@ studio 2017 entrpise的试用版即可（根据PHP版本的编译环境选择安
 
 a）新建一个编译目录，我自己准备的是E盘根目录下解压**php-sdk-binary-tools**   并重命名为php-sdk，测试编译工作目录为E:\php-sdk，截图如下：
 
-![1](images\1.png)
+![1](\1.png)
 
 b)在当前目录E:\php-sdk下按住shift键同时右击鼠标，选择“在此处打开命令窗口”打开命令行，phpsdk-vc15-x86.bat脚本
 
-![2](images\2.png)
+![2](2.png)
 
 c)再运行：phpsdk_buildtree phpdev，结束后会在E:\php-sdk\下生成“phpdev\vc15\x86”目录结构，解压php-7.3.5-src.zip，把php-7.3.5-src放到X86目录下，同时在x86下手动创建“prcl”目录，解压php-beast-master.zip，复制php-beast-master到prcl目录下，并改名为beast。
 
 d)在命令行下运行“cd phpdev\vc15\x86\php-7.3.5-src” 进入“E:\php-sdk\phpdev\vc15\x86\php-7.3.5-src” ,执行“phpsdk_deps --update --branch master”命令用来获取SDK的依赖包，最终目录结果如下图：
 
-![3](images\3.png)
+![3](3.png)
 
 ```
 E:\php-sdk\phpdev\vc15\x86\php-7.3.5-src
@@ -135,13 +135,13 @@ $ configure --enable-cli --disable-zts --enable-execute-normal-script=yes
 
 执行后如下图
 
-![4](images\4.png)
+![4](4.png)
 
 红框中就是beast模块，说明之前做的都正确了。
 
 这面configure时我没有关闭其他模块，而是默认全开了，如果你电脑配置不高的话建议关闭不必要的模块，毕竟我们只是要编译php-beast这一个扩展，扩展编译全开的话最后编译时很耗时间，我的电脑配置可能高一些，几分钟就好了，结束后如下图
 
-![5](images\5.png)
+![5](5.png)
 
 最后一步执行nmake命令
 
@@ -150,11 +150,11 @@ E:\php-sdk\phpdev\vc15\x86\php-7.3.5-src
 $ nmake
 ```
 
-![6](images\6.png)
+![6](6.png)
 
 编译成功
 
-![7](images\7.png)
+![7](7.png)
 
 至此，属于自己修改过密码等定制的windows版的dll文件编译完毕。
 
@@ -170,7 +170,7 @@ $ nmake
 
 5、定制自己的加密模块可以修改的文件：
 
-​	 a、`header.c`文件修改encrypt_file_header_sign[]，数组里面随便修改一下，破解的人无法根据文件头判断是否是beast加密的。
+​    a、`header.c`文件修改encrypt_file_header_sign[]，数组里面随便修改一下，破解的人无法根据文件头判断是否是beast加密的。
 
 ​    b、`aes_algo_handler.c`文件修改key[]数组，这里面是aes加解密密码。
 
